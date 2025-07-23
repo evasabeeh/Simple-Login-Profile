@@ -1,6 +1,9 @@
-# AgriKhet - Phone Number Authentication System
+<img width="500" height="300" alt="screencapture-localhost-3001-profile-2025-07-23-21_51_39" src="https://github.com/user-attachments/assets/dafe2796-bdf7-4970-8e51-e9fced7f1e02" />
 
-A modern, responsive authentication system built with Next.js 15 that implements phone number-based OTP authentication.
+<img width="500" height="300" alt="Screenshot (375)" src="https://github.com/user-attachments/assets/2f97f745-af0e-41c4-8fca-ecf851490667" />
+
+<img width="500" height="300" alt="Screenshot (376)" src="https://github.com/user-attachments/assets/100f7bdc-bc77-4016-82d5-2154216a654e" />
+
 
 ## 🌟 Features
 
@@ -12,7 +15,7 @@ A modern, responsive authentication system built with Next.js 15 that implements
 - **Mobile-First**: Optimized for mobile devices
 - **Accessibility**: Keyboard navigation and screen reader support
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 15 (App Router)
 - **Styling**: Tailwind CSS 4
@@ -21,26 +24,8 @@ A modern, responsive authentication system built with Next.js 15 that implements
 - **State Management**: React Context API
 - **Cookie Management**: js-cookie
 
-## 📱 Pages
 
-1. **Login Page** (`/auth/login`)
-   - Phone number input with validation
-   - Clean, modern interface
-   - Automatic OTP sending
-
-2. **OTP Verification** (`/auth/verify-otp`)
-   - 6-digit OTP input
-   - Auto-focus and paste support
-   - Resend OTP functionality with countdown timer
-   - Back navigation
-
-3. **Profile Page** (`/profile`)
-   - User information display
-   - Authentication status
-   - Logout functionality
-   - Quick actions panel
-
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Node.js 18 or higher
@@ -66,7 +51,7 @@ npm run dev
 
 Visit `http://localhost:3000` to see the application.
 
-## 🧪 Demo Mode
+## Demo Mode
 
 ### Without Backend
 The application includes a **Mock API** that generates real OTP codes for testing:
@@ -91,7 +76,7 @@ The application includes a **Mock API** that generates real OTP codes for testin
 ### With Backend
 To connect a real backend, see [BACKEND_SETUP.md](./BACKEND_SETUP.md) for detailed instructions.
 
-## 🔒 API Integration
+## API Integration
 
 The application supports both **real backend integration** and **mock API responses** for demonstration.
 
@@ -183,7 +168,7 @@ src/
 └── middleware.js          # Route protection middleware
 ```
 
-## 🔐 Authentication Flow
+## Authentication Flow
 
 1. **User enters phone number** on login page
 2. **OTP is sent** to the provided phone number
@@ -193,25 +178,7 @@ src/
 6. **User is redirected** to profile page
 7. **Middleware protects** all subsequent requests
 
-## 🎨 UI/UX Features
-
-### Design Elements
-- **Modern Gradient Backgrounds**: Beautiful blue-to-indigo gradients
-- **Card-based Layout**: Clean white cards with subtle shadows
-- **Responsive Grid**: Mobile-first responsive design
-- **Icon Integration**: SVG icons for better visual hierarchy
-- **Loading States**: Smooth loading animations
-- **Error Handling**: User-friendly error messages
-
-### User Experience
-- **Auto-focus**: Automatic focus on input fields
-- **Keyboard Navigation**: Full keyboard accessibility
-- **Paste Support**: OTP can be pasted as a complete string
-- **Real-time Validation**: Instant feedback on form inputs
-- **Toast Notifications**: Non-intrusive success/error messages
-- **Smooth Transitions**: CSS transitions for better feel
-
-## 🛡️ Security Features
+## Security Features
 
 - **JWT Token Storage**: Secure token storage in HTTP-only cookies
 - **Route Protection**: Middleware-based route protection
@@ -219,14 +186,6 @@ src/
 - **Token Expiration**: Automatic token refresh handling
 - **XSS Protection**: Secure coding practices
 - **CSRF Protection**: Token-based request validation
-
-## 📱 Mobile Optimization
-
-- **Mobile-First Design**: Optimized for mobile devices
-- **Touch-Friendly**: Large touch targets for better usability
-- **Responsive Typography**: Scalable text for all screen sizes
-- **Optimized Images**: Proper image optimization
-- **Fast Loading**: Minimal bundle size for quick loading
 
 ## 🚀 Build & Deployment
 
@@ -239,31 +198,3 @@ npm run build
 ```bash
 npm start
 ```
-
-### Lint Code
-```bash
-npm run lint
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-For support and questions:
-- Create an issue in the repository
-- Contact the development team
-- Check the documentation
-
----
-
-Built with ❤️ using Next.js and Tailwind CSS
