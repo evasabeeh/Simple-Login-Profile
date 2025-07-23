@@ -1,3 +1,5 @@
+**Note -  For Mock API - OTP generated will be printed on Browser console**
+
 <img width="500" height="300" alt="screencapture-localhost-3001-profile-2025-07-23-21_51_39" src="https://github.com/user-attachments/assets/dafe2796-bdf7-4970-8e51-e9fced7f1e02" />
 
 <img width="500" height="300" alt="Screenshot (375)" src="https://github.com/user-attachments/assets/2f97f745-af0e-41c4-8fca-ecf851490667" />
