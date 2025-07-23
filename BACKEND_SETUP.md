@@ -6,7 +6,14 @@ The frontend application automatically detects if a backend is available and fal
 
 ### Demo Credentials
 - **Phone Number**: Any valid phone number format (e.g., +1234567890)
-- **OTP**: Any 6-digit number (e.g., 123456)
+- **OTP**: Generated real 6-digit codes (check browser console - Press F12)
+
+### Mock API Features
+- ✅ **Real OTP Generation**: 6-digit random codes
+- ✅ **Console Logging**: OTP displayed in browser console
+- ✅ **Expiration**: 5-minute validity period
+- ✅ **Attempt Limiting**: Maximum 3 attempts per OTP
+- ✅ **Realistic Delays**: Network simulation with delays
 
 ## 🔧 Backend API Requirements
 

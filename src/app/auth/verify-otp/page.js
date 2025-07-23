@@ -190,7 +190,7 @@ export default function VerifyOTPPage() {
                   onChange={(e) => handleOtpChange(index, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   onPaste={handlePaste}
-                  className="w-12 h-12 text-center text-xl font-bold border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                  className="w-12 h-12 text-center text-xl font-bold text-black bg-white border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:text-black transition-all duration-200 placeholder-gray-400 shadow-sm"
                   autoFocus={index === 0}
                 />
               ))}
@@ -224,7 +224,23 @@ export default function VerifyOTPPage() {
           </div>
 
           {/* Tips */}
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="flex items-start">
+              <svg className="w-5 h-5 text-blue-600 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <p className="text-sm text-blue-800 font-medium mb-1">
+                  🔍 Check Browser Console for OTP
+                </p>
+                <p className="text-xs text-blue-600">
+                  Press F12 → Console tab to see your generated OTP code
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 p-4 bg-gray-50 rounded-lg">
             <p className="text-sm text-gray-600 text-center">
               💡 Tip: You can paste the entire OTP code at once
             </p>

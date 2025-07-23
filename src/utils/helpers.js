@@ -3,7 +3,12 @@ export const formatPhoneNumber = (phoneNumber) => {
   // Remove all non-digit characters
   const cleaned = phoneNumber.replace(/\D/g, '');
   
-  // Format based on length
+  // Format as +CC XXXXXXXXXX if exactly 12 digits
+  if (cleaned.length === 12) {
+    return `+${cleaned.slice(0, 2)} ${cleaned.slice(2, 5)}-${cleaned.slice(5, 8)}-${cleaned.slice(8)}`;
+  }
+  
+  // Otherwise return as-is with basic formatting
   if (cleaned.length <= 3) {
     return cleaned;
   } else if (cleaned.length <= 6) {
@@ -19,8 +24,81 @@ export const validatePhoneNumber = (phoneNumber) => {
   // Remove all non-digit characters
   const cleaned = phoneNumber.replace(/\D/g, '');
   
-  // Check if it's a valid length (10-15 digits)
-  return cleaned.length >= 10 && cleaned.length <= 15;
+  // Must be exactly 12 digits: 2-digit country code + 10-digit number
+  if (cleaned.length !== 12) {
+    return false;
+  }
+  
+  // Country code should be between 10-99 (valid 2-digit codes)
+  const countryCode = cleaned.slice(0, 2);
+  const countryCodeNum = parseInt(countryCode);
+  
+  if (countryCodeNum < 10 || countryCodeNum > 99) {
+    return false;
+  }
+  
+  // The remaining 10 digits should be the phone number
+  const phoneDigits = cleaned.slice(2);
+  
+  // First digit of phone number shouldn't be 0 or 1 (common validation)
+  const firstDigit = parseInt(phoneDigits[0]);
+  if (firstDigit < 2) {
+    return false;
+  }
+  
+  return true;
+};
+
+export const validatePhoneNumberWithDetails = (phoneNumber) => {
+  // Remove all non-digit characters
+  const cleaned = phoneNumber.replace(/\D/g, '');
+  
+  if (cleaned.length === 0) {
+    return { isValid: false, error: 'Phone number is required' };
+  }
+  
+  if (cleaned.length < 12) {
+    return { 
+      isValid: false, 
+      error: `Phone number too short. Expected 12 digits (2-digit country code + 10-digit number), got ${cleaned.length}` 
+    };
+  }
+  
+  if (cleaned.length > 12) {
+    return { 
+      isValid: false, 
+      error: `Phone number too long. Expected 12 digits (2-digit country code + 10-digit number), got ${cleaned.length}` 
+    };
+  }
+  
+  // Country code validation
+  const countryCode = cleaned.slice(0, 2);
+  const countryCodeNum = parseInt(countryCode);
+  
+  if (countryCodeNum < 10 || countryCodeNum > 99) {
+    return { 
+      isValid: false, 
+      error: `Invalid country code "${countryCode}". Must be a 2-digit code between 10-99` 
+    };
+  }
+  
+  // Phone number validation
+  const phoneDigits = cleaned.slice(2);
+  const firstDigit = parseInt(phoneDigits[0]);
+  
+  if (firstDigit < 2) {
+    return { 
+      isValid: false, 
+      error: `Invalid phone number. First digit cannot be ${firstDigit}` 
+    };
+  }
+  
+  return { 
+    isValid: true, 
+    countryCode, 
+    phoneNumber: phoneDigits,
+    formatted: `+${countryCode} ${phoneDigits.slice(0, 3)}-${phoneDigits.slice(3, 6)}-${phoneDigits.slice(6)}`
+  };
 };
 
 export const normalizePhoneNumber = (phoneNumber) => {

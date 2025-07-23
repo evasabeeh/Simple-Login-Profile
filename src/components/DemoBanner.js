@@ -23,7 +23,7 @@ const DemoBanner = () => {
           <p className="text-sm text-yellow-700">
             <strong>Demo Mode:</strong> Backend API not available. Using mock responses for demonstration.
             <br />
-            <span className="text-xs">💡 Tip: Any 6-digit OTP will work for login demo!</span>
+            <span className="text-xs">💡 Tip: Real OTP will be generated and shown in browser console!</span>
           </p>
         </div>
       </div>

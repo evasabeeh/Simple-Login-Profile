@@ -7,7 +7,7 @@ import Input from '@/components/Input';
 import Button from '@/components/Button';
 import { LoadingScreen } from '@/components/Loading';
 import DemoBanner from '@/components/DemoBanner';
-import { validatePhoneNumber as validatePhone, formatPhoneNumber } from '@/utils/helpers';
+import { validatePhoneNumberWithDetails, formatPhoneNumber } from '@/utils/helpers';
 
 export default function LoginPage() {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -40,17 +40,20 @@ export default function LoginPage() {
       return;
     }
 
-    if (!validatePhone(phoneNumber)) {
-      setErrors({ phoneNumber: 'Please enter a valid phone number' });
+    // Use detailed validation
+    const validation = validatePhoneNumberWithDetails(phoneNumber);
+    if (!validation.isValid) {
+      setErrors({ phoneNumber: validation.error });
       return;
     }
 
     setLoading(true);
 
     try {
-      const result = await sendOTP(phoneNumber);
+      // Use the formatted phone number for API call
+      const result = await sendOTP(validation.formatted);
       if (result.success) {
-        router.push(`/auth/verify-otp?phone=${encodeURIComponent(phoneNumber)}`);
+        router.push(`/auth/verify-otp?phone=${encodeURIComponent(validation.formatted)}`);
       }
     } catch (error) {
       console.error('Send OTP error:', error);
@@ -74,14 +77,15 @@ export default function LoginPage() {
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Welcome to AgriKhet</h2>
             <p className="mt-2 text-gray-600">Enter your phone number to get started</p>
+            <p className="text-sm text-gray-500">Format: +[Country Code][10-digit number] (e.g., +91 9876543210)</p>
           </div>
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <Input
-              label="Phone Number"
+              label="Phone Number (with Country Code)"
               type="tel"
-              placeholder="+1 (555) 123-4567"
+              placeholder="+91 9876543210"
               value={phoneNumber}
               onChange={handlePhoneChange}
               error={errors.phoneNumber}
@@ -104,6 +108,16 @@ export default function LoginPage() {
             <p className="text-sm text-gray-500">
               We'll send you a verification code to confirm your phone number
             </p>
+            <div className="mt-3 p-3 bg-blue-50 rounded-lg">
+              <p className="text-xs text-blue-600 font-medium">📋 Format Requirements:</p>
+              <p className="text-xs text-blue-600">
+                • 2-digit country code (e.g., 91 for India, 1 for US)
+                <br />
+                • 10-digit phone number (no leading 0 or 1)
+                <br />
+                • Example: +91 9876543210, +1 2345678901
+              </p>
+            </div>
           </div>
         </div>
 

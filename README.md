@@ -69,11 +69,24 @@ Visit `http://localhost:3000` to see the application.
 ## 🧪 Demo Mode
 
 ### Without Backend
-The application includes a **Mock API** that automatically activates when no backend is detected:
+The application includes a **Mock API** that generates real OTP codes for testing:
 
-- **Phone Number**: Enter any valid phone number format
-- **OTP**: Use any 6-digit number (e.g., `123456`)
+- **Phone Number**: Must be exactly 12 digits (2-digit country code + 10-digit number)
+  - Valid examples: `+91 9876543210`, `+1 2345678901`, `+44 7876543210`
+  - Invalid examples: `+1 234567890` (too short), `+123 4567890` (3-digit country code)
+- **OTP Generation**: Real 6-digit OTP codes are generated
+- **Console Output**: OTP is displayed in browser console (Press F12)
+- **Expiration**: OTP expires in 5 minutes
+- **Attempts**: Maximum 3 verification attempts per OTP
 - **Demo Banner**: Shows when using mock responses
+
+### How to Test
+1. Enter a valid phone number (2-digit country code + 10-digit number, e.g., +91 9876543210)
+2. Click "Send OTP" button
+3. Open browser console (F12 → Console tab)
+4. Copy the generated OTP from console
+5. Enter the OTP in the verification form
+6. Access your profile page
 
 ### With Backend
 To connect a real backend, see [BACKEND_SETUP.md](./BACKEND_SETUP.md) for detailed instructions.
